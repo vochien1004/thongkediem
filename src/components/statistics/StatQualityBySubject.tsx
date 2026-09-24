@@ -41,7 +41,8 @@ export const StatQualityBySubject: React.FC<StatQualityBySubjectProps> = ({
   config,
   globalFilter,
 }) => {
-  const [selectedSubject, setSelectedSubject] = useState<string>('ALL');
+  // Mặc định hiển thị môn Toán khi nhấn vào menu Theo Môn
+  const [selectedSubject, setSelectedSubject] = useState<string>('Toán');
   const [gradeFilter, setGradeFilter] = useState<string>('ALL');
   const [viewLayout, setViewLayout] = useState<'official' | 'extended'>('official');
 
