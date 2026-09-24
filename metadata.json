@@ -1,0 +1,6 @@
+{
+  "name": "EduScore AI - Quản Lý & Phân Tích Điểm Học Sinh",
+  "description": "Hệ thống SPA quản lý, phân tích điểm học sinh từ Excel, trực quan hóa biểu đồ và thống kê kết quả học tập tự động kết nối Firebase Firestore",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

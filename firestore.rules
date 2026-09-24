@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cho phép đọc và ghi dữ liệu điểm học sinh (Collection chính: student_scores)
+    match /student_scores/{scoreId} {
+      allow read, write: if true;
+    }
+    
+    // Tương thích ngược với các collection hỗ trợ
+    match /students/{studentId} {
+      allow read, write: if true;
+    }
+    match /exam_sessions/{sessionId} {
+      allow read, write: if true;
+    }
+    match /settings/{settingId} {
+      allow read, write: if true;
+    }
+    match /ai_reports/{reportId} {
+      allow read, write: if true;
+    }
+  }
+}

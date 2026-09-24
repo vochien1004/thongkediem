@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "StudentScore": {
+      "title": "StudentScore",
+      "description": "Bản ghi điểm số học sinh theo từng môn học và đợt thi",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "description": "Mã học sinh / Số báo danh" },
+        "fullName": { "type": "string", "description": "Họ và tên học sinh" },
+        "class": { "type": "string", "description": "Lớp học (VD: 10B1, 10B3)" },
+        "dob": { "type": "string", "description": "Ngày tháng năm sinh" },
+        "ethnicity": { "type": "string", "description": "Dân tộc" },
+        "grade": { "type": "string", "description": "Khối lớp (VD: Khối 10)" },
+        "score": { "type": "number", "description": "Điểm số thang 10 (null nếu vắng)" },
+        "teacherName": { "type": "string", "description": "Giáo viên giảng dạy bộ môn" },
+        "subject": { "type": "string", "description": "Tên môn học trích xuất từ tên Sheet" },
+        "rank": { "type": "string", "description": "Xếp loại: Tốt, Khá, Đạt, Chưa đạt, Vắng" },
+        "academicYear": { "type": "string", "description": "Năm học (VD: 2024-2025, 2025-2026)" },
+        "semester": { "type": "string", "description": "Học kỳ (KS, HK1, HK2)" },
+        "period": { "type": "string", "description": "Đợt lấy điểm (KS - Khảo sát đầu năm, GKI, CKI, GKII, CKII)" },
+        "soBD": { "type": "string", "description": "Số báo danh (alias)" },
+        "hoTen": { "type": "string", "description": "Họ và tên (alias)" },
+        "lop": { "type": "string", "description": "Lớp (alias)" },
+        "monHoc": { "type": "string", "description": "Môn học (alias)" },
+        "giaoVien": { "type": "string", "description": "Giáo viên (alias)" },
+        "diem": { "type": "number", "description": "Điểm số (alias)" },
+        "xepLoai": { "type": "string", "description": "Xếp loại (alias)" },
+        "namHoc": { "type": "string", "description": "Năm học (alias)" },
+        "hocKy": { "type": "string", "description": "Học kỳ (alias)" },
+        "dotDiem": { "type": "string", "description": "Đợt điểm (alias)" },
+        "updatedAt": { "type": "string", "description": "Thời điểm cập nhật" }
+      },
+      "required": ["studentId", "fullName", "class", "subject", "academicYear", "semester", "period"]
+    },
+    "SystemConfig": {
+      "title": "SystemConfig",
+      "description": "Cấu hình hệ thống điểm và thông tin trường học",
+      "type": "object",
+      "properties": {
+        "schoolName": { "type": "string" },
+        "academicYear": { "type": "string" },
+        "term": { "type": "string" },
+        "examName": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/student_scores/{scoreId}": {
+      "schema": "StudentScore",
+      "description": "Lưu trữ toàn bộ danh sách điểm của các môn học và lớp"
+    },
+    "/students/{studentId}": {
+      "schema": "StudentScore",
+      "description": "Alias tương thích ngược"
+    },
+    "/settings/{settingId}": {
+      "schema": "SystemConfig",
+      "description": "Lưu cấu hình hệ thống"
+    }
+  }
+}
