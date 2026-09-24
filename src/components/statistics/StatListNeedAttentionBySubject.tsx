@@ -131,10 +131,10 @@ export const StatListNeedAttentionBySubject: React.FC<StatListNeedAttentionBySub
           </div>
           <div>
             <h3 className="font-bold text-slate-900 text-sm sm:text-base">
-              Danh Sách Học Sinh Cần Quan Tâm
+              Danh Sách Học Sinh Cần Quan Tâm (có điểm &lt; 5)
             </h3>
             <p className="text-xs text-slate-500">
-              Chi tiết danh tính, số điểm còn thiếu và giáo viên phụ trách để nhà trường tổ chức phụ đạo kịp thời
+              Chi tiết họ tên, số điểm còn thiếu và giáo viên phụ trách để nhà trường tổ chức phụ đạo kịp thời
             </p>
           </div>
         </div>
