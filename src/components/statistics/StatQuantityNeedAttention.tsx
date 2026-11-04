@@ -186,7 +186,7 @@ export const StatQuantityNeedAttention: React.FC<StatQuantityNeedAttentionProps>
             title="Xuất bảng tổng hợp số lượng HS cần quan tâm theo đúng biểu mẫu hình ảnh"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Xuất file Excel chuẩn</span>
+            <span>Xuất file Số lượng HS cần quan tâm</span>
           </button>
         </div>
       </div>

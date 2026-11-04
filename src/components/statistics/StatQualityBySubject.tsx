@@ -199,7 +199,7 @@ export const StatQualityBySubject: React.FC<StatQualityBySubjectProps> = ({
             className="px-3.5 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-xs transition flex items-center gap-1.5 cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Xuất ThongKeChatLuong_Theo môn.xlsx</span>
+            <span>Xuất file Thống kê chất lượng theo môn</span>
           </button>
         </div>
       </div>

@@ -227,7 +227,7 @@ export const StatQualityByTeacher: React.FC<StatQualityByTeacherProps> = ({
               title="Xuất file Excel chứa đầy đủ các Sheet của từng Giáo viên, hiển thị đủ số lớp và số môn"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Xuất ThongKeChatLuong_Theo Giáo viên.xlsx</span>
+              <span>Xuất file Thống kê chất lượng theo Giáo viên</span>
             </button>
             {selectedTeacher !== 'ALL' && (
               <button

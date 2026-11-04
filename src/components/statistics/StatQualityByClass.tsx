@@ -179,7 +179,7 @@ export const StatQualityByClass: React.FC<StatQualityByClassProps> = ({
             title="Xuất file Excel đúng định dạng hình ảnh với đa sheet tương ứng từng lớp"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Xuất ThongKeChatLuong_Theo lớp.xlsx</span>
+            <span>Xuất file Thống kê chất lượng theo lớp</span>
           </button>
         </div>
       </div>
