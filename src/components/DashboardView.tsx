@@ -303,7 +303,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 Xuất Báo Cáo Excel
               </span>
               <h3 className="font-bold text-slate-900 text-sm sm:text-base">
-                Biểu Mẫu Thống Kê & Báo Cáo Chuẩn Sở GD&ĐT
+                Biểu Mẫu Thống Kê
               </h3>
             </div>
             <p className="text-xs text-slate-500">
