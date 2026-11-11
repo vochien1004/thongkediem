@@ -106,7 +106,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       icon: LayoutDashboard,
       badge: totalStudents > 0 ? `${totalStudents} HS` : undefined,
       badgeColor: 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30',
-      allowedRoles: ['admin'],
+      allowedRoles: ['admin', 'teacher'],
     },
     {
       id: 'upload' as ActiveTab,
@@ -137,9 +137,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
     },
   ];
 
-  // Giáo viên chỉ xem được toàn bộ menu Thống kê chất lượng, không xem được trang tổng quan
+  // Giáo viên xem được menu Tổng quan và Thống kê chất lượng
   const navItems = isTeacher
-    ? allNavItems.filter((item) => item.id === 'statistics')
+    ? allNavItems.filter((item) => item.id === 'dashboard' || item.id === 'statistics')
     : allNavItems;
 
   const handleSelectTab = (tab: ActiveTab) => {

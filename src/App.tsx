@@ -47,11 +47,8 @@ export default function App() {
   // Quản lý trạng thái hạn mức Firestore
   const [quotaInfo, setQuotaInfo] = useState<FirestoreQuotaInfo>(() => getFirestoreQuotaInfo());
 
-  // State quản lý tab đang mở (Giáo viên mặc định vào 'statistics', Admin vào 'dashboard')
-  const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
-    const stored = getStoredAuthUser();
-    return stored?.role === 'teacher' ? 'statistics' : 'dashboard';
-  });
+  // State quản lý tab đang mở (Mặc định vào 'dashboard' cho cả Admin và Giáo viên)
+  const [activeTab, setActiveTab] = useState<ActiveTab>('dashboard');
 
   // State quản lý 6 phân hệ thống kê con đang mở
   const [activeStatModule, setActiveStatModule] = useState<StatModuleType>('theo_mon');
@@ -387,15 +384,15 @@ export default function App() {
 
   const isTeacher = currentUser?.role === 'teacher';
 
-  // Giáo viên chỉ xem được toàn bộ menu Thống kê chất lượng, không xem được trang tổng quan
+  // Giáo viên xem được menu Tổng quan và Thống kê chất lượng
   useEffect(() => {
-    if (isTeacher && activeTab !== 'statistics') {
-      setActiveTab('statistics');
+    if (isTeacher && activeTab !== 'dashboard' && activeTab !== 'statistics') {
+      setActiveTab('dashboard');
     }
   }, [isTeacher, activeTab]);
 
   const handleSetActiveTab = (tab: ActiveTab) => {
-    if (isTeacher && tab !== 'statistics') {
+    if (isTeacher && tab !== 'dashboard' && tab !== 'statistics') {
       return;
     }
     setActiveTab(tab);
@@ -408,7 +405,7 @@ export default function App() {
         config={config}
         onLoginSuccess={(user) => {
           setCurrentUser(user);
-          setActiveTab(user.role === 'teacher' ? 'statistics' : 'dashboard');
+          setActiveTab('dashboard');
         }}
       />
     );
@@ -494,7 +491,7 @@ export default function App() {
 
         {/* Dynamic View by Tab */}
         <main className="flex-1 overflow-y-auto">
-          {activeTab === 'dashboard' && !isTeacher && (
+          {activeTab === 'dashboard' && (
             <DashboardView
               students={filteredStudents}
               stats={filteredStats}
