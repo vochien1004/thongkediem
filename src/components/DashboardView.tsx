@@ -40,6 +40,7 @@ import {
   exportSpecialAttention,
   exportAll5Reports,
 } from '../utils/reportExportHelpers';
+import { getExamDetailsFromGlobalFilter } from '../utils/syncExamInfo';
 
 ChartJS.register(
   CategoryScale,
@@ -176,6 +177,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
     ],
   };
 
+  // Lấy thông tin đợt kiểm tra & năm học trực tiếp từ bộ lọc đang hiển thị (globalFilter)
+  const activeExamDetails = globalFilter
+    ? getExamDetailsFromGlobalFilter(globalFilter)
+    : {
+        examName: config.examName,
+        academicYear: config.academicYear,
+        term: config.term,
+      };
+
   return (
     <div className="p-3 sm:p-6 space-y-4 sm:space-y-6 max-w-7xl mx-auto">
       {/* Banner chào mừng & tóm tắt nhanh */}
@@ -183,14 +193,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-              Báo cáo tổng hợp
+              Báo cáo tổng hợp • Năm học {activeExamDetails.academicYear}
             </span>
             <span className="text-[11px] sm:text-xs text-slate-300">
-              Cập nhật từ dữ liệu bảng điểm
+              {activeExamDetails.term}
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
-            {config.examName} • {config.schoolName}
+            {activeExamDetails.examName} • {config.schoolName}
           </h2>
           <p className="text-xs text-slate-300 mt-1 max-w-xl">
             Tổng số <strong>{stats.total}</strong> lượt bài thi của học sinh trên{' '}

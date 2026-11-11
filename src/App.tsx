@@ -126,6 +126,10 @@ export default function App() {
     return unsub;
   }, []);
 
+  // Ref lưu globalFilter hiện tại để đồng bộ ngay cả trong các hàm bất đồng bộ
+  const globalFilterRef = useRef<GlobalFilterState>(globalFilter);
+  globalFilterRef.current = globalFilter;
+
   // TỰ ĐỘNG ĐỒNG BỘ THÔNG TIN KỲ THI, NĂM HỌC VÀ HỌC KỲ TỪ BỘ LỌC TOÀN CỤC VÀO CONFIG (Lưu vào LocalStorage)
   useEffect(() => {
     saveLatestUploadedFilter(globalFilter);
@@ -219,15 +223,18 @@ export default function App() {
       setIsFirebaseConnected(false);
     });
 
-    // Tải cấu hình từ Firebase một lần khi ứng dụng mở
+    // Tải cấu hình từ Firebase một lần khi ứng dụng mở (luôn ưu tiên thông tin đợt kiểm tra từ globalFilter hiện tại)
     loadSystemConfigFromFirestore().then((cloudConfig) => {
       if (cloudConfig) {
         const hasKS = cloudConfig.examPeriods && cloudConfig.examPeriods.some((p) => p.id === 'KS');
         const examPeriods = hasKS ? cloudConfig.examPeriods : DEFAULT_EXAM_PERIODS;
-        const merged: SystemConfig = {
-          ...cloudConfig,
-          examPeriods,
-        };
+        const merged: SystemConfig = syncExamInfoFromFilter(
+          {
+            ...cloudConfig,
+            examPeriods,
+          },
+          globalFilterRef.current
+        );
         setConfig(merged);
         saveStoredConfig(merged);
       }
@@ -284,10 +291,13 @@ export default function App() {
         if (cloudConfig) {
           const hasKS = cloudConfig.examPeriods && cloudConfig.examPeriods.some((p) => p.id === 'KS');
           const examPeriods = hasKS ? cloudConfig.examPeriods : DEFAULT_EXAM_PERIODS;
-          const merged: SystemConfig = {
-            ...cloudConfig,
-            examPeriods,
-          };
+          const merged: SystemConfig = syncExamInfoFromFilter(
+            {
+              ...cloudConfig,
+              examPeriods,
+            },
+            globalFilterRef.current
+          );
           setConfig(merged);
           saveStoredConfig(merged);
         }
