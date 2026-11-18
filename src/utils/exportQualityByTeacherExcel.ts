@@ -485,6 +485,37 @@ export function buildTeacherWorksheet(
     });
   });
 
+  // Thêm khoảng trống và chân trang NGƯỜI LẬP (Hoàng Thị Thanh Bình)
+  aoa.push(new Array(12).fill(null).map(() => makeCell('')));
+  aoa.push(new Array(12).fill(null).map(() => makeCell('')));
+  currentRowIdx += 2;
+
+  aoa.push([
+    makeCell(''),
+    makeCell('NGƯỜI LẬP', {
+      font: { name: 'Arial', sz: 10.5, bold: true, color: { rgb: '000000' } },
+      alignment: { horizontal: 'center', vertical: 'center' },
+    }),
+    ...new Array(10).fill(null).map(() => makeCell('')),
+  ]);
+  merges.push({ s: { r: currentRowIdx, c: 1 }, e: { r: currentRowIdx, c: 3 } });
+  currentRowIdx++;
+
+  aoa.push(new Array(12).fill(null).map(() => makeCell('')));
+  aoa.push(new Array(12).fill(null).map(() => makeCell('')));
+  currentRowIdx += 2;
+
+  aoa.push([
+    makeCell(''),
+    makeCell('Hoàng Thị Thanh Bình', {
+      font: { name: 'Arial', sz: 11, bold: true, color: { rgb: '000000' } },
+      alignment: { horizontal: 'center', vertical: 'center' },
+    }),
+    ...new Array(10).fill(null).map(() => makeCell('')),
+  ]);
+  merges.push({ s: { r: currentRowIdx, c: 1 }, e: { r: currentRowIdx, c: 3 } });
+  currentRowIdx++;
+
   const ws = XLSX.utils.aoa_to_sheet(aoa);
   ws['!merges'] = merges;
 

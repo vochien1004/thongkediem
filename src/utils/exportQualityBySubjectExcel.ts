@@ -187,7 +187,7 @@ export function buildSubjectWorksheet(
   allStudentsOfSubject: StudentScore[],
   config: SystemConfig,
   currentDateStr: string,
-  signerName: string = 'Võ Chiến',
+  signerName: string = 'Hoàng Thị Thanh Bình',
   globalFilter?: GlobalFilterState
 ): XLSX.WorkSheet {
   // LỌC CHÍNH XÁC CÁC HỌC SINH THUỘC ĐÚNG MÔN HỌC NÀY:
@@ -858,7 +858,7 @@ export function exportQualityBySubjectExcelFile(
       subStudents,
       config,
       currentDateStr,
-      'Võ Chiến',
+      'Hoàng Thị Thanh Bình',
       globalFilter
     );
 

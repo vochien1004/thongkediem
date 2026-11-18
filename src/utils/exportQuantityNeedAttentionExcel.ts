@@ -511,6 +511,28 @@ export function exportQuantityNeedAttentionExcel(
   });
   currentRow++;
 
+  // 10. CHÂN TRANG NGƯỜI LẬP (Hoàng Thị Thanh Bình)
+  currentRow += 2; // 2 dòng trống
+  const rowSignerTitle = currentRow;
+  const styleSignerCenter = {
+    font: fontBold,
+    alignment: { horizontal: 'center', vertical: 'center' },
+  };
+  for (let c = 1; c <= 3; c++) {
+    const ref = XLSX.utils.encode_cell({ r: rowSignerTitle, c });
+    ws[ref] = makeCell(c === 1 ? 'NGƯỜI LẬP' : '', styleSignerCenter);
+  }
+  merges.push({ s: { r: rowSignerTitle, c: 1 }, e: { r: rowSignerTitle, c: 3 } });
+  currentRow += 3; // 2 dòng trống cho chữ ký
+
+  const rowSignerName = currentRow;
+  for (let c = 1; c <= 3; c++) {
+    const ref = XLSX.utils.encode_cell({ r: rowSignerName, c });
+    ws[ref] = makeCell(c === 1 ? 'Hoàng Thị Thanh Bình' : '', styleSignerCenter);
+  }
+  merges.push({ s: { r: rowSignerName, c: 1 }, e: { r: rowSignerName, c: 3 } });
+  currentRow++;
+
   // Thiết lập vùng tính toán của Sheet (!ref)
   const lastRowIdx = currentRow - 1;
   ws['!ref'] = XLSX.utils.encode_range({

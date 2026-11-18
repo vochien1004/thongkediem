@@ -510,7 +510,7 @@ export const StatQualityByClass: React.FC<StatQualityByClassProps> = ({
                     (Đã ký)
                   </div>
                   <div className="font-bold text-slate-900 text-xs">
-                    Võ Chiến
+                    Hoàng Thị Thanh Bình
                   </div>
                 </div>
               </div>

@@ -584,7 +584,7 @@ export const StatQualityBySubject: React.FC<StatQualityBySubjectProps> = ({
                   <div className="h-16 flex items-center justify-center">
                     <span className="text-slate-300 italic text-xs">[Chữ ký]</span>
                   </div>
-                  <div className="font-bold text-slate-900 text-sm">Võ Chiến</div>
+                  <div className="font-bold text-slate-900 text-sm">Hoàng Thị Thanh Bình</div>
                 </div>
 
                 <div className="text-right text-[11px] text-slate-400 self-end">

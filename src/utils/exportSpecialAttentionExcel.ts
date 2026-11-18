@@ -282,6 +282,35 @@ export function exportSpecialAttentionExcel(
       });
     }
 
+    // Chân trang NGƯỜI LẬP (Hoàng Thị Thanh Bình)
+    sheetData.push([makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell('')]);
+    sheetData.push([makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell('')]);
+    currentRow += 2;
+
+    sheetData.push([
+      makeCell(''),
+      makeCell('NGƯỜI LẬP', { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } }),
+      makeCell(''),
+      makeCell(''),
+      makeCell(''),
+      makeCell(''),
+    ]);
+    currentRow++;
+
+    sheetData.push([makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell('')]);
+    sheetData.push([makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell(''), makeCell('')]);
+    currentRow += 2;
+
+    sheetData.push([
+      makeCell(''),
+      makeCell('Hoàng Thị Thanh Bình', { font: { bold: true, sz: 11 }, alignment: { horizontal: 'center' } }),
+      makeCell(''),
+      makeCell(''),
+      makeCell(''),
+      makeCell(''),
+    ]);
+    currentRow++;
+
     // Chuyển mảng sheetData thành sheet object
     const ws: any = {};
     for (let R = 0; R < sheetData.length; ++R) {

@@ -93,14 +93,14 @@ function makeCell(value: any, style: any = {}, type?: 's' | 'n' | 'b' | 'e') {
  * - Bảng 2 tầng header: TT | Môn | SL HS dự KT | Chưa đạt (điểm < 5) | Đạt (5<= điểm <6.5) | Khá (6.5<= điểm <8) | Tốt (điểm >= 8)
  *   Sub-header: SL | TL
  * - CHỈ XUẤT CÁC MÔN HỌC MÀ LỚP NÀY CÓ HỌC SINH DỰ KIỂM TRA (slDuKt > 0).
- * - Chân trang: NGƯỜI LẬP (Võ Chiến)
+ * - Chân trang: NGƯỜI LẬP (Hoàng Thị Thanh Bình)
  */
 export function buildClassWorksheet(
   className: string,
   allStudentsOfClass: StudentScore[],
   config: SystemConfig,
   currentDateStr: string,
-  signerName: string = 'Võ Chiến',
+  signerName: string = 'Hoàng Thị Thanh Bình',
   globalFilter?: GlobalFilterState
 ): XLSX.WorkSheet {
   // Lấy các môn mà học sinh lớp này tham gia
@@ -531,7 +531,7 @@ export function exportQualityByClassExcelFile(
       classStudents,
       config,
       currentDateStr,
-      'Võ Chiến',
+      'Hoàng Thị Thanh Bình',
       globalFilter
     );
 
