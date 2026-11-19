@@ -526,10 +526,7 @@ export const UploadView: React.FC<UploadViewProps> = ({
             <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-indigo-600" />
               <span>Chọn Đợt Điểm Cho File Excel Chuẩn Bị Tải Lên:</span>
-            </span>
-            <span className="text-[11px] text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200 font-medium">
-              Bộ khóa Merge: <strong>[Mã HS + Môn + {uploadYear} + {uploadSemester} + {uploadPeriod}]</strong> (Không lo trùng lặp)
-            </span>
+            
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
